@@ -299,6 +299,17 @@ button.src:hover{border-color:var(--acc)}
 .wl{list-style:none;margin:6px 0 0;padding:0;font-size:13.5px}.wl li{display:flex;gap:6px;align-items:flex-start;margin:3px 0;color:var(--dang)}
 @media (max-width:600px){.rx{font-size:14px}.rx thead{display:none}.rx tr.ln{display:grid;padding:8px 0;border-bottom:1px solid var(--line)}.rx tr.ln td{border:0;padding:2px 0}.rx tr.ln td:not(.dn)::before{content:attr(data-l);display:inline-block;width:7.5em;color:var(--mute);font-size:12px;font-weight:600}.rx tr.orh,.rx tr.nt,.rx tr.dp{display:block}.rx tr.orh td,.rx tr.nt td,.rx tr.dp td{display:block}.dxl{grid-template-columns:minmax(0,1fr)}}
 
+.etabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.eb{display:flex;align-items:center;gap:6px;min-height:52px;padding:6px 10px;border-radius:12px;border:2px solid var(--tc);background:var(--tb);color:var(--tc);font-weight:700;font-size:13.5px;text-align:left}
+.eb.on{background:var(--tc);color:#fff}.eb.on svg{color:#fff}
+.tmr{border:2px solid var(--dang)}.tmr-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.tmr select,.fld select{width:100%}
+.bigred{width:100%;min-height:60px;border:0;border-radius:14px;background:var(--dang);color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.tmr-s{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}.tmr-s div{background:var(--card2);border-radius:10px;padding:8px}.tmr-s span{display:block;font-size:12px;color:var(--mute)}.tmr-s b{font-size:20px}
+.tmr-s div.due{background:var(--dang);color:#fff}.tmr-s div.due span{color:#fff}
+.tmr-l{font-size:14px;margin:0 0 8px}
+.pmw{display:flex;gap:6px}.pmw input{flex:1}.pmb{min-width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:20px;font-weight:700}
+@media (max-width:600px){.tmr-s{grid-template-columns:repeat(2,minmax(0,1fr))}.tmr-g{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:1280px){.shell{grid-template-columns:260px minmax(0,1fr)}.rp{position:static;max-height:none;grid-column:2}}
 @media (max-width:900px){
  .shell{grid-template-columns:minmax(0,1fr);padding:10px}
@@ -1204,6 +1215,68 @@ D.gout={id:'gout',g:'endo',name:'Tăng acid uric máu và gout cấp',
  special:{renal:'Chỉnh colchicin, allopurinol; tránh NSAID.',elderly:'Thận trọng NSAID, colchicin.',multi:'Clarithromycin, ciclosporin + colchicin: chống chỉ định khi suy gan/thận.'},
  diff:[{k:'Liều colchicin',intl:'EULAR 2016: 1 mg rồi 0,5 mg sau 1 giờ. ACR 2020: dạng 0,6 mg (1,2 mg rồi 0,6 mg).',vn:'Chưa đối chiếu hướng dẫn Bộ Y tế.'}],
  calcs:['crcl'],refs:['acr_gout20','eular_gout16']};
+/* ===================== PHẢN VỆ – SỐC PHẢN VỆ ===================== */
+Object.assign(REFS,{
+ tt51:{t:'Thông tư 51/2017/TT-BYT hướng dẫn phòng, chẩn đoán và xử trí phản vệ (ban hành 29/12/2017, hiệu lực 15/02/2018 – còn hiệu lực)',org:'Bộ Y tế',y:2017,url:'https://thuvienphapluat.vn/van-ban/the-thao-y-te/thong-tu-51-2017-tt-byt-huong-dan-phong-chan-doan-va-xu-tri-phan-ve-320095.aspx',v:'ok'},
+ rcuk21:{t:'Emergency treatment of anaphylaxis: Guidelines for healthcare providers (05/2021) – vẫn là hướng dẫn phản vệ chi tiết được RCUK 2025 dẫn chiếu',org:'RCUK',y:2021,url:'https://resus.org.uk/media/337/download',v:'ok'},
+ rcukref:{t:'RCUK – Refractory anaphylaxis algorithm (2021)',org:'RCUK',y:2021,url:'https://resus.org.uk/media/334/download',v:'ok'},
+ rcuk25:{t:'RCUK 2025 Resuscitation Guidelines – Special circumstances (27/10/2025): ngừng tuần hoàn do phản vệ',org:'RCUK',y:2025,url:'https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/special-circumstances-guidelines',v:'ok'},
+ erc25:{t:'European Resuscitation Council Guidelines 2025 – Special Circumstances in Resuscitation. Resuscitation 2025;215(Suppl 1):110753',org:'ERC',y:2025,url:'https://doi.org/10.1016/j.resuscitation.2025.110753',v:'ok'}
+});
+Object.assign(DRUG,{
+ adr_im:{n:'Adrenalin (tiêm bắp)',f:'Ống 1 mg/1 mL (1:1000)',cls:'Catecholamin – thuốc hàng đầu',titr:'Tiêm bắp mặt trước ngoài 1/3 giữa đùi. RCUK: người lớn và trẻ > 12 tuổi 0,5 mg (0,5 mL), nhắc lại sau 5 phút nếu ABC chưa cải thiện. TT51: người lớn 0,5–1 mg, nhắc lại mỗi 3–5 phút đến khi ổn định.',max:'Không có liều tối đa cố định trong cấp cứu – nhắc lại theo đáp ứng; sau 2 liều không cải thiện → phác đồ kháng trị',renal:'Không chỉnh.',hep:'Không chỉnh.',ci:'Không có chống chỉ định tuyệt đối trong phản vệ.',ix:'Chẹn beta: đáp ứng kém (cân nhắc glucagon). IMAO, chống trầm cảm 3 vòng: tăng tác dụng.',ae:'Nhịp nhanh, run, tăng huyết áp, rối loạn nhịp (nhất là khi tiêm TM sai đường).'},
+ adr_iv:{n:'Adrenalin truyền TM liên tục',f:'Ống 1 mg/1 mL',cls:'Catecholamin',titr:'TT51: khởi đầu 0,1 µg/kg/phút, chỉnh theo HA, nhịp tim, SpO2 đến liều thấp nhất có hiệu quả. RCUK (kháng trị, ngoại vi liều thấp): 1 mg/100 mL NaCl 0,9%, chạy theo đáp ứng.',max:'Theo đáp ứng – chỉ người có kinh nghiệm hồi sức',renal:'Không chỉnh.',hep:'Không chỉnh.',ci:'KHÔNG tiêm TM trực tiếp dung dịch 1 mg/mL khi còn tuần hoàn.',ix:'Như adrenalin tiêm bắp.',ae:'Rối loạn nhịp, thiếu máu cơ tim, tăng HA quá mức.',mix:'1 mg/50 mL (20 µg/mL) · 1 mg/100 mL (10 µg/mL) · 1 mg/250 mL (4 µg/mL). Pha NaCl 0,9% hoặc glucose 5%.',rate:'mL/giờ = µg/kg/phút × kg × 60 ÷ nồng độ (µg/mL). Bơm tiêm điện, đường truyền riêng, monitor liên tục.'},
+ adr_neb:{n:'Adrenalin khí dung',f:'Ống 1 mg/1 mL',cls:'Catecholamin',titr:'Tắc nghẽn đường thở trên/thở rít: 5 mL dung dịch 1 mg/mL (5 mg) khí dung (RCUK).',max:'Theo đáp ứng',renal:'—',hep:'—',ci:'Không thay thế adrenalin tiêm bắp.',ix:'—',ae:'Nhịp nhanh.'},
+ adr_cpr:{n:'Adrenalin (ngừng tuần hoàn)',f:'Ống 1 mg/1 mL',cls:'Catecholamin – liều ALS',titr:'Người lớn 1 mg TM/trong xương mỗi 3–5 phút. Trẻ em 10 µg/kg (tối đa 1 mg). CHỈ dùng khi NGỪNG TUẦN HOÀN.',max:'Theo thuật toán ALS',renal:'—',hep:'—',ci:'Không dùng liều này khi còn tuần hoàn.',ix:'—',ae:'—'},
+ amio:{n:'Amiodaron',f:'Ống 150 mg/3 mL',cls:'Chống loạn nhịp',titr:'Ngừng tuần hoàn rung thất/nhanh thất vô mạch: 300 mg TM/trong xương sau sốc điện lần 3; thêm 150 mg sau lần 5 (ALS).',max:'450 mg trong cấp cứu ngừng tuần hoàn',renal:'—',hep:'—',ci:'Không áp dụng trong ngừng tuần hoàn.',ix:'—',ae:'Hạ HA, nhịp chậm.'},
+ glucag:{n:'Glucagon',f:'Lọ 1 mg',cls:'Hormon – tăng co bóp không qua thụ thể beta',titr:'Phản vệ kháng trị ở người đang dùng chẹn beta: 1–5 mg TM chậm trong 5 phút, sau đó truyền 5–15 µg/phút theo đáp ứng.',max:'Theo đáp ứng',renal:'—',hep:'—',ci:'U tủy thượng thận.',ix:'Warfarin (tăng INR).',ae:'Buồn nôn, nôn (nguy cơ hít sặc), tăng đường huyết.',rv:1},
+ diphen:{n:'Diphenhydramin',f:'Ống 10 mg/1 mL',cls:'Kháng histamin H1 thế hệ 1',titr:'TT51: người lớn 25–50 mg tiêm bắp/TM; trẻ em 10–25 mg. Chỉ là điều trị hỗ trợ.',max:'Theo tờ hướng dẫn',renal:'Thận trọng.',hep:'Thận trọng.',ci:'Không thay thế adrenalin.',ix:'Thuốc an thần (cộng hợp).',ae:'Buồn ngủ, hạ HA khi tiêm TM nhanh, kháng cholinergic.',rv:1},
+ cetiri:{n:'Cetirizin',f:'Viên 10 mg',cls:'Kháng histamin H1 không gây ngủ',titr:'Sau ổn định, triệu chứng da: 10 mg uống × 1 lần/ngày (RCUK khuyến cáo kháng H1 không gây ngủ đường uống).',max:'10–20 mg/ngày',renal:'CrCl < 30: 5 mg/ngày.',hep:'Thận trọng.',ci:'Không dùng thay adrenalin.',ix:'—',ae:'Buồn ngủ nhẹ.'}
+});
+const ADR_IM_R=L('adr_im','0,5 mg = 0,5 mL (ống 1 mg/mL)','Tiêm bắp mặt trước ngoài đùi','Nhắc lại sau 5 phút nếu ABC chưa cải thiện','Đến khi ổn định',{note:'Trẻ em theo tuổi: < 6 tháng 0,1–0,15 mg · 6 tháng–6 tuổi 0,15 mg · 6–12 tuổi 0,3 mg · > 12 tuổi 0,5 mg'});
+const ADR_IM_T=L('adr_im','0,5–1 mg = 0,5–1 mL (1/2–1 ống)','Tiêm bắp mặt trước ngoài đùi','Nhắc lại mỗi 3–5 phút đến khi HA, mạch ổn định','Đến khi ổn định',{note:'Trẻ em: 0,01 mg/kg – đối chiếu bảng liều Phụ lục III TT51 (công cụ "Adrenalin tiêm bắp theo cân nặng")'});
+D.anaph={id:'anaph',g:'other',name:'Phản vệ – Sốc phản vệ',defView:'t:now',
+ keys:'phản vệ sốc phản vệ anaphylaxis adrenalin epinephrin tiêm bắp dị ứng thông tư 51 rcuk',
+ summary:'Adrenalin tiêm bắp là ưu tiên hàng đầu – không trì hoãn để dùng corticoid/kháng histamin. TT51 (Bộ Y tế) và RCUK trình bày tách riêng, không trộn liều.',
+ def:'Phản ứng dị ứng toàn thân, khởi phát nhanh, có thể đe dọa tính mạng. RCUK: vấn đề đường thở và/hoặc hô hấp và/hoặc tuần hoàn đe dọa tính mạng, thường kèm thay đổi da – niêm mạc. CÓ THỂ KHÔNG có biểu hiện ngoài da.',
+ cls:[['Độ I – Nhẹ (TT51)','Chỉ biểu hiện da – niêm mạc: mày đay, ngứa, phù mạch.'],['Độ II – Nặng (TT51)','≥ 2 cơ quan: mày đay/phù lan rộng, khó thở nhẹ, đau bụng, nôn, tiêu chảy; HA chưa tụt.'],['Độ III – Nguy kịch (TT51)','Phù thanh quản/thở rít, khó thở nặng, tím; rối loạn ý thức; sốc (tụt HA, mạch nhanh nhỏ).'],['Độ IV – Ngừng tuần hoàn','Ngừng hô hấp, ngừng tuần hoàn.']],
+ sev:['RCUK: chỉ triệu chứng da không kèm vấn đề ABC → không phải phản vệ; theo dõi sát vì có thể tiến triển.','Phản vệ kháng trị (RCUK): vấn đề hô hấp/tuần hoàn còn tồn tại sau 2 liều adrenalin tiêm bắp phù hợp.'],
+ red:['Thở rít, khàn tiếng, phù lưỡi','Khò khè, SpO2 giảm, tím','Tụt HA, ngất, rối loạn ý thức','Đang dùng chẹn beta (đáp ứng kém với adrenalin)'],
+ states:[{id:'g1',l:'Độ I – Nhẹ',x:'gr',xl:'Phân độ (TT51 – chọn 1)',t:'caut'},{id:'g2',l:'Độ II – Nặng',x:'gr',t:'dang'},{id:'g3',l:'Độ III – Nguy kịch',x:'gr',t:'dang'},{id:'g4',l:'Độ IV – Ngừng tuần hoàn',x:'gr',t:'dang'},
+  {id:'child',l:'Trẻ em',gl:'Đối tượng – bệnh kèm'},{id:'bb',l:'Đang dùng chẹn beta',t:'caut'},{id:'stridor',l:'Thở rít / phù thanh quản',t:'dang'},{id:'broncho',l:'Co thắt phế quản kéo dài'},{id:'refr',l:'Không cải thiện sau 2 liều adrenalin tiêm bắp',t:'dang'}],
+ need:[],
+ tabs:[['diag','CHẨN ĐOÁN','i-info','mon',{view:'ov'}],['grade','PHÂN ĐỘ','i-layers','caut',{regs:['g1t','g1r','im_t','im_r','air','arrest']}],['now','XỬ TRÍ NGAY','i-amb','dang',{regs:['now']}],
+  ['im','ADRENALIN TIÊM BẮP','i-pill','dang',{regs:['im_t','im_r'],widget:'adrTimer',calcs:['adrim']}],['iv','ADRENALIN TRUYỀN TM','i-pulse','dang',{regs:['iv_t','iv_r'],calcs:['adr']}],
+  ['pump','TÍNH LIỀU BƠM TIÊM ĐIỆN','i-calc','caut',{calcs:['adr','pump']}],['fluid','BÙ DỊCH','i-layers','mon',{regs:['fl_r','fl_t'],calcs:['fluid']}],
+  ['refr','PHẢN VỆ KHÁNG TRỊ','i-alert','dang',{regs:['refr','iv_t','iv_r','supp_r','supp_t'],flow:1}],['arrest','NGỪNG TUẦN HOÀN','i-alert','dang',{regs:['arrest']}],['post','THEO DÕI','i-clock','mon',{regs:['post'],view:'fu'}]],
+ regs:[
+  {id:'now',cat:['er','prio'],t:'dang',def:1,w:S=>N(S,'g4'),title:'XỬ TRÍ NGAY (mọi độ ≥ II; độ I theo dõi sát)',acts:['Ngừng ngay tiếp xúc dị nguyên (dừng thuốc đang tiêm/truyền).','Gọi hỗ trợ cấp cứu.','Tư thế: nằm ngửa, nâng chân; khó thở → nửa ngồi; có thai → nghiêng trái. KHÔNG để bệnh nhân đột ngột đứng hoặc ngồi dậy.','Đánh giá ABCDE.','TIÊM BẮP ADRENALIN NGAY (độ II trở lên) – không trì hoãn để dùng thuốc khác.','Oxy qua mặt nạ có túi dự trữ 10–15 L/phút.','Đặt đường truyền TM (2 đường lớn nếu sốc), bù dịch.','Monitor điện tim, SpO2, HA, mạch.','Đánh giá sớm chỉ định kiểm soát đường thở, đặt nội khí quản (phù thanh quản tiến triển).'],warn:['Không trì hoãn adrenalin để dùng corticoid hoặc kháng histamin'],src:['tt51','rcuk21']},
+  {id:'im_r',cat:['er','prio'],t:'dang',def:1,w:S=>H(S,'g2','g3'),title:'ADRENALIN TIÊM BẮP – theo RCUK 2021',lines:[ADR_IM_R],warn:['Sau 2 liều không cải thiện hô hấp/tuần hoàn → PHẢN VỆ KHÁNG TRỊ'],src:['rcuk21']},
+  {id:'im_t',cat:['er','prio'],t:'dang',def:1,w:S=>H(S,'g2','g3'),title:'ADRENALIN TIÊM BẮP – theo TT51/2017 (Bộ Y tế)',lines:[ADR_IM_T],acts:['Tiêm nhắc lại đến khi HA, mạch ổn định; sau 2–3 lần không đáp ứng → cân nhắc truyền adrenalin TM.'],src:['tt51'],rv:1},
+  {id:'g1t',cat:['opd'],t:'caut',w:S=>H(S,'g1'),title:'Độ I – theo TT51',ind:'TT51: độ I dùng thuốc hỗ trợ, theo dõi sát chuyển độ.',lines:[OR(L('mpred','1–2 mg/kg (tối đa 50 mg trẻ em, 200 mg người lớn)','Tiêm TM/tiêm bắp','1 lần, có thể nhắc lại','Theo diễn biến'),L('diphen','Người lớn 25–50 mg; trẻ em 10–25 mg','Tiêm bắp/TM','1 lần','Theo diễn biến'))],warn:['Xuất hiện triệu chứng hô hấp/tuần hoàn → xử trí như độ II (tiêm bắp adrenalin ngay)'],src:['tt51'],rv:1},
+  {id:'g1r',cat:['opd'],t:'mon',w:S=>H(S,'g1'),title:'Chỉ triệu chứng da – theo RCUK',ind:'RCUK: không phải phản vệ nếu không có vấn đề ABC. Kháng H1 không gây ngủ; theo dõi.',lines:[L('cetiri','10 mg','Uống','1 lần/ngày','Theo triệu chứng')],src:['rcuk21']},
+  {id:'air',cat:['er','comp'],t:'dang',w:S=>H(S,'g3','stridor'),title:'Độ III – đường thở/hô hấp',lines:[L('adr_neb','5 mL dung dịch 1 mg/mL (5 mg)','Khí dung','Khi thở rít, có thể nhắc lại','Theo đáp ứng',{note:'Hỗ trợ – KHÔNG thay adrenalin tiêm bắp'})],acts:['Gọi bác sĩ gây mê/hồi sức; chuẩn bị đặt nội khí quản sớm, mở khí quản/chọc màng nhẫn giáp nếu thất bại.'],refer:['ICU'],src:['rcukref']},
+  {id:'fl_r',cat:['er'],t:'mon',def:1,w:S=>H(S,'g2','g3','refr'),title:'BÙ DỊCH – theo RCUK',lines:[OR(L('nacl09','Người lớn 500–1000 mL; trẻ em 10 mL/kg','Truyền TM nhanh','Bolus, đánh giá lại sau mỗi bolus','Theo huyết động'),L('lr','Như trên','Truyền TM nhanh','Bolus','Theo huyết động'))],acts:['Kháng trị: có thể cần thể tích lớn (ví dụ 3–5 L ở người lớn) – theo dõi quá tải dịch.'],src:['rcuk21','rcukref']},
+  {id:'fl_t',cat:['er'],t:'mon',w:S=>H(S,'g2','g3','refr'),title:'BÙ DỊCH – theo TT51',lines:[L('nacl09','Người lớn 1–2 L; trẻ em 10–20 mL/kg','Truyền TM nhanh','Trong 10–20 phút đầu, nhắc lại theo đáp ứng','Theo huyết động')],src:['tt51'],rv:1},
+  {id:'iv_t',cat:['er','fail'],t:'dang',w:S=>H(S,'refr','g3'),title:'ADRENALIN TRUYỀN TM – theo TT51',ind:'Khi tiêm bắp nhắc lại không đáp ứng.',lines:[L('adr_iv','Khởi đầu 0,1 µg/kg/phút','Bơm tiêm điện TM, đường truyền riêng','Liên tục, chỉnh mỗi 3–5 phút theo HA, mạch, SpO2','Đến khi ổn định, giảm dần',{note:'Pha 1 mg/50 mL (20 µg/mL), 1 mg/100 mL (10) hoặc 1 mg/250 mL (4) – dùng công cụ tính'})],warn:['KHÔNG tiêm TM trực tiếp adrenalin 1 mg/mL khi còn tuần hoàn','Chỉ nhân viên có kinh nghiệm hồi sức; monitor liên tục'],acts:['TT51 có đề cập tiêm TM adrenalin trong tình huống đặc biệt – KHÔNG đưa vào phác đồ thường quy của phần mềm; chỉ áp dụng tại hồi sức chuyên sâu theo quyết định bác sĩ.'],src:['tt51'],rv:1},
+  {id:'iv_r',cat:['er','fail'],t:'dang',w:S=>H(S,'refr'),title:'ADRENALIN TRUYỀN TM – theo RCUK (kháng trị)',lines:[L('adr_iv','1 mg/100 mL NaCl 0,9% (10 µg/mL)','Truyền TM ngoại vi liều thấp qua đường riêng','Liên tục, chỉnh theo đáp ứng','Đến khi ổn định',{note:'Tiếp tục tiêm bắp mỗi 5 phút cho đến khi bắt đầu truyền'})],warn:['Chỉ chuyên gia có kinh nghiệm, môi trường phù hợp'],src:['rcukref'],rv:1},
+  {id:'refr',cat:['fail','er'],t:'dang',w:S=>H(S,'refr'),title:'PHẢN VỆ KHÁNG TRỊ (sau 2 liều tiêm bắp)',acts:['Gọi hồi sức sớm; adrenalin truyền TM (thẻ bên dưới).','Bù dịch nhanh, có thể cần thể tích lớn; đặt huyết áp động mạch, đường truyền trung tâm.','Không đáp ứng adrenalin truyền: thêm thuốc vận mạch thứ hai (noradrenalin) tại hồi sức.','Đang dùng chẹn beta: glucagon.'],lines:[L('norepi','Theo phác đồ hồi sức (khởi đầu thường 0,05–0,1 µg/kg/phút)','Truyền TM trung tâm','Liên tục','Theo huyết động',{note:'Chỉ khi kháng trị với adrenalin truyền'}),L('glucag','1–5 mg TM chậm trong 5 phút, sau đó 5–15 µg/phút','Tiêm/truyền TM','Khi đang dùng chẹn beta','Theo đáp ứng',{opt:1}),L('salb','5 mg (người lớn)','Khí dung','Khi co thắt phế quản kéo dài, nhắc lại theo đáp ứng','Theo đáp ứng',{opt:1}),L('ipra','0,5 mg (người lớn)','Khí dung','Phối hợp salbutamol khi cần','Theo đáp ứng',{opt:1})],src:['rcukref'],rv:1},
+  {id:'supp_r',cat:['spec'],t:'mon',w:S=>H(S,'g2','g3','refr'),title:'Thuốc hỗ trợ – quan điểm RCUK',ind:'Corticoid KHÔNG khuyến cáo thường quy; kháng H1 không dùng trong xử trí cấp. Chỉ cân nhắc corticoid sau hồi sức ban đầu (kháng trị, hen kèm theo).',lines:[L('cetiri','10 mg','Uống','1 lần/ngày, sau khi ổn định','Theo triệu chứng da'),L('hcort','Người lớn 200 mg','Tiêm TM chậm','1 lần','Chỉ khi có chỉ định trên',{note:'Liều chờ kiểm duyệt'})],warn:['Không dùng thay adrenalin; không khẳng định corticoid phòng được phản vệ hai pha'],src:['rcuk21'],rv:1},
+  {id:'supp_t',cat:['spec'],t:'mon',w:S=>H(S,'g2','g3'),title:'Thuốc hỗ trợ – theo TT51',lines:[L('mpred','1–2 mg/kg (tối đa 50 mg trẻ em, 200 mg người lớn)','Tiêm TM','Mỗi 4–6 giờ','Theo diễn biến'),L('diphen','Người lớn 25–50 mg; trẻ em 10–25 mg','Tiêm bắp/TM','Có thể nhắc lại','Theo diễn biến')],warn:['Dùng SAU adrenalin, không thay thế'],src:['tt51'],rv:1},
+  {id:'arrest',cat:['er'],t:'dang',w:S=>H(S,'g4'),title:'NGỪNG TUẦN HOÀN – theo thuật toán ALS',ind:'Liều adrenalin ở đây KHÁC hoàn toàn liều tiêm bắp điều trị phản vệ còn tuần hoàn.',lines:[L('adr_cpr','Người lớn 1 mg; trẻ em 10 µg/kg (tối đa 1 mg)','TM / trong xương','Mỗi 3–5 phút','Suốt quá trình hồi sinh tim phổi',{note:'Nhịp không sốc điện: tiêm càng sớm càng tốt; nhịp sốc điện: sau sốc lần 3'}),L('amio','300 mg (thêm 150 mg sau sốc lần 5)','TM / trong xương','Sau sốc điện lần 3','Theo thuật toán',{opt:1}),L('nacl09','Bù dịch tích cực (nhiều lít ở người lớn)','Truyền TM/trong xương','Nhanh','Theo đáp ứng')],acts:['Ép tim chất lượng cao, sớm; thông khí; phân loại nhịp: rung thất/nhanh thất vô mạch → sốc điện; vô tâm thu/hoạt động điện vô mạch → không sốc điện.','Xử trí nguyên nhân; cân nhắc hồi sinh kéo dài/ECPR.'],refer:['ICU sau tái lập tuần hoàn'],src:['erc25','rcuk25']},
+  {id:'post',cat:['ipd'],t:'mon',def:1,w:()=>true,title:'THEO DÕI SAU CẤP CỨU',acts:['TT51: theo dõi tối thiểu 24 giờ sau khi huyết động, hô hấp ổn định (nguy cơ phản vệ hai pha).','Giảm dần adrenalin/vận mạch khi huyết áp, mạch ổn định; không ngừng đột ngột.','Tryptase: lấy càng sớm càng tốt sau khởi phát, mẫu thứ hai trong khoảng 1–2 giờ (không muộn hơn 4 giờ), mẫu nền ≥ 24 giờ sau – KHÔNG trì hoãn cấp cứu.','Ghi dị nguyên vào hồ sơ, cấp thẻ theo dõi dị ứng (TT51), báo cáo phản ứng có hại của thuốc.','Tư vấn tránh dị nguyên; chuyển khám chuyên khoa dị ứng; cân nhắc kê bút tiêm adrenalin.'],refer:['ICU: độ III, phản vệ kháng trị, cần vận mạch/đặt nội khí quản'],src:['tt51','rcuk21'],rv:1}],
+ admit:['Mọi phản vệ độ II trở lên','Độ I có yếu tố nguy cơ hoặc nghi tiến triển'],refer:['ICU: độ III–IV, kháng trị, cần thuốc vận mạch hoặc kiểm soát đường thở'],
+ fu:['Đánh giá lại sau mỗi mũi adrenalin (3–5 phút theo TT51; 5 phút theo RCUK).','Theo dõi tối thiểu 24 giờ (TT51).','Khám chuyên khoa dị ứng sau ra viện.'],
+ stop:['Giảm adrenalin truyền từ từ khi HA, mạch ổn định; theo dõi tái phát khi giảm.'],
+ discharge:['Ổn định ≥ 24 giờ (TT51)','Đã ghi nhận dị nguyên, cấp thẻ dị ứng, hướng dẫn xử trí tái phát'],
+ mon:{clin:['HA, mạch, SpO2, nhịp thở, ý thức, da niêm'],lab:['Tryptase (khi phù hợp)','Khí máu, lactat nếu sốc'],ok:['HA, mạch ổn định, hết khó thở'],fail:['Không cải thiện sau 2 liều adrenalin → kháng trị']},
+ special:{elderly:'Bệnh mạch vành: vẫn dùng adrenalin tiêm bắp – lợi ích vượt nguy cơ; monitor.',preg:'Nằm nghiêng trái; adrenalin vẫn là thuốc đầu tay.',multi:'Chẹn beta: đáp ứng kém → glucagon; ức chế men chuyển: có thể nặng hơn.'},
+ diff:[{k:'Liều adrenalin tiêm bắp người lớn',intl:'RCUK: 0,5 mg, nhắc lại sau 5 phút.',vn:'TT51: 0,5–1 mg, nhắc lại mỗi 3–5 phút.'},{k:'Độ I (chỉ biểu hiện da)',intl:'RCUK: không phải phản vệ; kháng H1 không gây ngủ.',vn:'TT51: methylprednisolon hoặc diphenhydramin, theo dõi.'},{k:'Corticoid, kháng histamin',intl:'RCUK: không khuyến cáo thường quy trong xử trí cấp.',vn:'TT51: dùng hỗ trợ sau adrenalin.'},{k:'Bù dịch',intl:'RCUK: bolus 500–1000 mL (người lớn), 10 mL/kg (trẻ em).',vn:'TT51: 1–2 L (người lớn), 10–20 mL/kg (trẻ em) trong 10–20 phút đầu.'},{k:'Adrenalin truyền TM',intl:'RCUK: 1 mg/100 mL ngoại vi liều thấp sau 2 liều tiêm bắp.',vn:'TT51: khởi đầu 0,1 µg/kg/phút.'},{k:'Theo dõi',intl:'RCUK: thời gian theo dõi phân tầng theo nguy cơ.',vn:'TT51: tối thiểu 24 giờ.'}],
+ flow:{start:'a',n:{a:{s:'Nhận diện',t:'Có vấn đề đường thở / hô hấp / tuần hoàn?',o:[['Có','b','dang'],['Chỉ da – niêm mạc','a1','caut']]},a1:{s:'Độ I',t:'Theo dõi sát; xử trí độ I; xuất hiện ABC → tiêm bắp adrenalin',end:1,tone:'caut',set:['g1']},
+  b:{s:'Ngừng tuần hoàn?',t:'Còn tuần hoàn?',o:[['Còn','c','dang'],['Ngừng tuần hoàn','b1','dang']]},b1:{s:'Độ IV',t:'ALS: CPR + adrenalin 1 mg TM/IO mỗi 3–5 phút',end:1,tone:'dang',set:['g4']},
+  c:{s:'Xử trí',t:'Adrenalin tiêm bắp + oxy + dịch; đánh giá lại sau 5 phút. Cải thiện?',o:[['Cải thiện','c1','prio'],['Chưa, tiêm liều 2','d','dang']],set:['g2']},c1:{s:'Theo dõi',t:'Theo dõi ≥ 24 giờ (TT51), tryptase, ghi dị nguyên',end:1,tone:'prio'},
+  d:{s:'Sau 2 liều',t:'Hô hấp/tuần hoàn còn rối loạn?',o:[['Còn','e','dang'],['Cải thiện','c1','prio']]},e:{s:'Kháng trị',t:'Gọi hồi sức, adrenalin truyền TM, dịch thể tích lớn; chẹn beta → glucagon',end:1,tone:'dang',set:['refr']}}},
+ calcs:['adrim','adr','fluid','pump'],refs:['tt51','rcuk21','rcukref','rcuk25','erc25']};
 /* ===================== CÔNG CỤ TÍNH ===================== */
 const ln=Math.log, clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const fmt=(v,d=0)=>Number(v).toLocaleString('vi-VN',{maximumFractionDigits:d,minimumFractionDigits:d});
@@ -1256,6 +1329,27 @@ const CALCS={
     ['Insulin truyền 0,1–0,3 đơn vị/kg/giờ (tăng TG)',fmt(0.1*w,1)+' – '+fmt(0.3*w,1)+' đơn vị/giờ'],['Insulin nền khởi đầu 0,1–0,2 đơn vị/kg/ngày',fmt(0.1*w,0)+' – '+fmt(0.2*w,0)+' đơn vị/ngày'],
     ['Vancomycin duy trì 15–20 mg/kg/lần',fmt(15*w)+' – '+fmt(20*w)+' mg/lần'],['Vancomycin nạp 20–35 mg/kg (tối đa 3 g)',fmt(Math.min(3000,20*w))+' – '+fmt(Math.min(3000,35*w))+' mg'],
     ['Amikacin 15 mg/kg/ngày',fmt(15*w)+' mg/ngày'],['Paracetamol 15 mg/kg/lần (khi < 50 kg)',w<50?fmt(15*w)+' mg/lần':'≥ 50 kg: 1 g/lần']]}}},
+ adrim:{name:'Adrenalin tiêm bắp theo tuổi/cân nặng (ống 1 mg/mL)',src:'RCUK 2021 (theo tuổi). TT51/2017: 0,01 mg/kg – đối chiếu bảng Phụ lục III. Hai nguồn hiển thị tách riêng, không trộn.',
+  f:[{k:'wt',l:'Cân nặng (kg)',t:'num',min:1,max:250},{k:'age',l:'Nhóm tuổi',t:'sel',o:[['','— chọn —'],['a','Người lớn / > 12 tuổi'],['c3','6–12 tuổi'],['c2','6 tháng – 6 tuổi'],['c1','< 6 tháng']]}],req:['age'],
+  run(v){const R={a:[0.5,'0,5 mg'],c3:[0.3,'0,3 mg'],c2:[0.15,'0,15 mg'],c1:[0.1,'0,1–0,15 mg']}[v.age];
+   const o={big:R[1]+' = '+fmt(R[0],2)+' mL',lab:'RCUK 2021 – tiêm bắp, nhắc lại sau 5 phút',tone:'dang',txt:''};
+   if(v.age==='a'){o.big2='0,5–1 mg = 0,5–1 mL';o.lab2='TT51 – người lớn, nhắc lại mỗi 3–5 phút';}
+   else if(v.wt!=null){const t=Math.min(0.5,0.01*v.wt);o.big2=fmt(t,2)+' mg = '+fmt(t,2)+' mL';o.lab2='TT51 – 0,01 mg/kg (giới hạn 0,5 mg ở trẻ em – chờ kiểm duyệt)';}
+   else o.txt='Nhập cân nặng để tính liều trẻ em theo TT51.';
+   o.txt+=' Ống 1 mg/mL: số mg = số mL. Tiêm bắp mặt trước ngoài đùi.';return o}},
+ adr:{name:'Adrenalin truyền TM liên tục',src:'Tốc độ (mL/giờ) = liều (µg/kg/phút) × cân nặng × 60 ÷ nồng độ (µg/mL). Khởi đầu theo TT51: 0,1 µg/kg/phút. Chỉ bác sĩ xác nhận mới thành y lệnh.',
+  presets:[{n:'Adrenalin',c:[[1,50,'1 mg/50 mL (20 µg/mL)'],[1,100,'1 mg/100 mL (10 µg/mL)'],[1,250,'1 mg/250 mL (4 µg/mL)']]}],
+  f:[{k:'wt',l:'Cân nặng (kg)',t:'num',min:1,max:250},{k:'amp',l:'Số ống 1 mg',t:'num',min:1,max:10},{k:'vol',l:'Thể tích cuối (mL)',t:'num',min:10,max:500},{k:'dose',l:'Liều (µg/kg/phút)',t:'num',step:'0.01',min:0.01,max:2,pm:0.05}],req:['wt','amp','vol','dose'],
+  run(v){const conc=v.amp*1000/v.vol,ugmin=v.dose*v.wt,rate=ugmin*60/conc,w=[];let tone='dang';
+   if(v.dose>1)w.push('Liều > 1 µg/kg/phút: rất cao – kiểm tra lại, hội chẩn hồi sức.');else if(v.dose>0.5)w.push('Liều > 0,5 µg/kg/phút: cân nhắc thêm vận mạch thứ hai.');
+   if(conc>100)w.push('Nồng độ > 100 µg/mL: kiểm tra lại số ống/thể tích.');if(rate>200)w.push('Tốc độ > 200 mL/giờ: không phù hợp bơm tiêm – tăng nồng độ.');
+   w.push('Bơm tiêm điện, đường truyền riêng, monitor liên tục. KHÔNG tiêm TM trực tiếp ống 1 mg/mL.');
+   return{big:fmt(rate,1)+' mL/giờ',lab:'Tốc độ truyền',tone,big2:fmt(v.dose,2)+' µg/kg/phút · '+fmt(ugmin,1)+' µg/phút',lab2:'Liều đang tính',txt:'Nồng độ '+fmt(conc,1)+' µg/mL ('+v.amp+' mg/'+v.vol+' mL). Hết bơm sau ≈ '+fmt(v.vol/rate,1)+' giờ.',warn:w}}},
+ fluid:{name:'Bù dịch trong phản vệ',src:'RCUK 2021: bolus 500–1000 mL (người lớn), 10 mL/kg (trẻ em). TT51: 1–2 L (người lớn), 10–20 mL/kg (trẻ em) trong 10–20 phút đầu. Đánh giá lại sau mỗi bolus.',
+  f:[{k:'wt',l:'Cân nặng (kg)',t:'num',min:1,max:250},{k:'grp',l:'Đối tượng',t:'sel',o:[['','— chọn —'],['a','Người lớn'],['c','Trẻ em']]}],req:['grp'],
+  run(v){if(v.grp==='a')return{table:[['RCUK – bolus người lớn','500–1000 mL'],['TT51 – người lớn','1–2 L (nhắc lại theo đáp ứng)'],['Kháng trị (RCUK)','Có thể cần 3–5 L – theo dõi quá tải']]};
+   if(v.wt==null)return{miss:['wt']};const w=v.wt;return{table:[['RCUK – trẻ em 10 mL/kg',fmt(10*w)+' mL/bolus'],['TT51 – trẻ em 10–20 mL/kg (10–20 phút đầu)',fmt(10*w)+' – '+fmt(20*w)+' mL']]}}},
+
  pump:{name:'Tốc độ bơm tiêm điện',src:'Tốc độ (mL/giờ) = liều mỗi giờ ÷ nồng độ. Giới hạn liều là mức tham khảo từ các thẻ thuốc – không tự xác nhận y lệnh.',
   presets:[
    {n:'Noradrenalin',u:'mcg',du:'kgmin',c:[[4000,50,'4 mg/50 mL (80 mcg/mL)'],[8000,50,'8 mg/50 mL (160 mcg/mL)']],dose:0.05,min:0.01,max:1,hi:0.5,note:'Đường truyền trung tâm.'},
@@ -1295,7 +1389,7 @@ try{const r=localStorage.getItem('nth_v2');if(r)store=Object.assign(store,JSON.p
 const save=()=>{try{localStorage.setItem('nth_v2',JSON.stringify(store));}catch(e){}};
 const ALL=[];for(const g of GROUPS)for(const [id,name,src] of CATALOG[g.id])ALL.push({id,name,src,g:g.id});
 const sel={},flows={},openGroups=new Set(['gi']);
-let cur=null,view='all',navStack=[],hlDrug=null;
+let cur=null,view='all',navStack=[],hlDrug=null,adrLog=[],adrIntv=5;
 const S=()=>sel[cur]||(sel[cur]=new Set());
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('on'),3200);}
 
@@ -1316,7 +1410,7 @@ function drugKeys(regs){const s=new Set();for(const r of regs)for(const l of fla
 /* ---------- điều hướng ---------- */
 function openDisease(id,o={}){
  if(ALIAS[id]){const a=ALIAS[id];openDisease(a.to,{});const d=DB[a.to],set=S(),n=[];for(const s of a.set)addSt(d,set,s,n);if(a.set.length)toast('Mở bài '+d.name+' với lựa chọn tương ứng.');render();return;}
- if(cur&&cur!==id&&!o.back)navStack.push(cur);cur=id;view=o.view||'all';hlDrug=o.drug||null;
+ if(cur&&cur!==id&&!o.back)navStack.push(cur);cur=id;view=o.view||(DB[id]&&DB[id].defView)||'all';hlDrug=o.drug||null;
  const it=ALL.find(x=>x.id===id)||(DB[id]&&{g:DB[id].g});if(it)openGroups.add(it.g);
  store.hist=[id,...store.hist.filter(x=>x!==id)].slice(0,8);store.cnt[id]=(store.cnt[id]||0)+1;save();
  try{if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);}catch(e){}
@@ -1418,7 +1512,7 @@ function viewFlow(d){const F=d.flow,p=flows[cur]||(flows[cur]=[F.start]);
 
 /* ---------- công cụ tính ---------- */
 function calcHTML(id,open){const c=CALCS[id];
- const fld=f=>f.t==='ck'?'<label class="ck"><input type="checkbox" name="'+f.k+'">'+esc(f.l)+'</label>':f.t==='sel'?'<div class="fld"><label>'+esc(f.l)+'</label><select name="'+f.k+'">'+f.o.map(o=>'<option value="'+o[0]+'">'+esc(o[1])+'</option>').join('')+'</select></div>':'<div class="fld"><label>'+esc(f.l)+'</label><input type="number" inputmode="decimal" step="'+(f.step||'any')+'" name="'+f.k+'"></div>';
+ const fld=f=>f.t==='ck'?'<label class="ck"><input type="checkbox" name="'+f.k+'">'+esc(f.l)+'</label>':f.t==='sel'?'<div class="fld"><label>'+esc(f.l)+'</label><select name="'+f.k+'">'+f.o.map(o=>'<option value="'+o[0]+'">'+esc(o[1])+'</option>').join('')+'</select></div>':'<div class="fld"><label>'+esc(f.l)+'</label>'+(f.pm?'<div class="pmw"><button type="button" class="pmb" data-act="pm" data-k="'+f.k+'" data-d="-'+f.pm+'">−</button>':'')+'<input type="number" inputmode="decimal" step="'+(f.step||'any')+'" name="'+f.k+'">'+(f.pm?'<button type="button" class="pmb" data-act="pm" data-k="'+f.k+'" data-d="'+f.pm+'">+</button></div>':'')+'</div>';
  const pre=c.presets?'<div class="chips" style="margin-bottom:10px">'+c.presets.map((p,i)=>p.c.map((cc,j)=>'<button class="chip" style="min-height:36px;padding:4px 10px;font-size:13px" data-act="preset" data-c="'+id+'" data-i="'+i+'" data-j="'+j+'">'+esc(p.n)+' · '+esc(cc[2])+'</button>').join('')).join('')+'</div>':'';
  return'<details class="calc" data-calc="'+id+'"'+(open?' open':'')+'><summary>'+ic('i-calc','sm')+esc(c.name)+'<span class="r"></span></summary><div class="cb"><div>'+pre+'<div class="fgrid">'+c.f.map(fld).join('')+'</div>'+(c.note?'<p class="src" style="margin-top:8px">'+esc(c.note)+'</p>':'')+'</div><div class="res"><span class="lab">Kết quả</span><p class="empty">Nhập thông số để tính.</p></div><p class="src">Nguồn: '+esc(c.src)+'</p></div></details>';}
 function runCalc(el){const id=el.dataset.calc,c=CALCS[id],v={},bad=[];
@@ -1432,6 +1526,26 @@ function runCalc(el){const id=el.dataset.calc,c=CALCS[id],v={},bad=[];
  box.className='res t-'+r.tone;box.style.background='var(--tb)';
  box.innerHTML='<span class="lab">'+esc(r.lab)+'</span><span class="big" style="color:var(--tc)">'+esc(r.big)+'</span>'+(r.big2?'<span class="lab">'+esc(r.lab2)+'</span><span class="big" style="color:var(--tc);font-size:28px">'+esc(r.big2)+'</span>':'')+'<p>'+esc(r.txt)+'</p>'+(r.warn&&r.warn.length?'<ul class="wl">'+r.warn.map(w=>'<li>'+ic('i-alert','sm')+esc(w)+'</li>').join('')+'</ul>':'');sum.textContent=r.lab+': '+r.big;}
 function viewCalc(d){return d.calcs.map((id,i)=>calcHTML(id,i===0)).join('');}
+
+
+function timerHTML(){return'<div class="card tmr" id="adrT"></div>';}
+function renderTimer(){const el=document.getElementById('adrT');if(!el)return;const n=adrLog.length,tot=adrLog.reduce((s,x)=>s+x.d,0),last=adrLog[n-1];
+ const opt=[['0.5','0,5 mg – người lớn (RCUK; TT51 0,5–1 mg)'],['1','1 mg – người lớn (mức trên TT51)'],['0.3','0,3 mg – 6–12 tuổi (RCUK)'],['0.15','0,15 mg – 6 tháng–6 tuổi (RCUK)'],['0.1','0,1 mg – < 6 tháng (RCUK)']];
+ const cd=sel=>'<select id="'+sel+'">';
+ el.innerHTML='<div class="sec-t">'+ic('i-clock')+'Ghi nhận adrenalin tiêm bắp <small>bộ đếm hỗ trợ – không phải y lệnh</small></div><div class="tmr-g"><div class="fld"><label>Liều mũi tiêm</label><select id="adrDose">'+opt.map(o=>'<option value="'+o[0]+'"'+(last&&String(last.d)===o[0]?' selected':'')+'>'+o[1]+'</option>').join('')+'</select></div><div class="fld"><label>Đánh giá lại sau</label><select id="adrInt"><option value="5"'+(adrIntv===5?' selected':'')+'>5 phút (RCUK)</option><option value="3"'+(adrIntv===3?' selected':'')+'>3 phút (TT51 tối thiểu)</option></select></div></div>'+
+ '<button class="bigred" data-act="adrlog">'+ic('i-plus')+'GHI NHẬN MŨI TIÊM</button>'+
+ '<div class="tmr-s"><div><span>Số mũi</span><b>'+n+'</b></div><div><span>Tổng liều</span><b>'+fmt(tot,2)+' mg</b></div><div><span>Mũi gần nhất</span><b>'+(last?new Date(last.t).toLocaleTimeString('vi-VN'):'—')+'</b></div><div><span>Đánh giá lại</span><b id="adrCd">—</b></div></div>'+
+ (n>=2?'<div class="note t-dang">'+ic('i-alert','sm')+'<span><b>Đã '+n+' mũi.</b> Còn rối loạn hô hấp/tuần hoàn → <button class="lnkb" data-act="view" data-id="t:refr">PHẢN VỆ KHÁNG TRỊ</button></span></div>':'')+
+ (n?'<ol class="tmr-l">'+adrLog.map(x=>'<li>'+new Date(x.t).toLocaleTimeString('vi-VN')+' – '+fmt(x.d,2)+' mg tiêm bắp</li>').join('')+'</ol><div class="hrow"><button class="ibtn" data-act="adrundo">'+ic('i-back','sm')+'Xóa mũi cuối</button><button class="ibtn" data-act="adrreset">'+ic('i-reset','sm')+'Đặt lại</button></div>':'');tickTimer();}
+function tickTimer(){const e=document.getElementById('adrCd');if(!e||!adrLog.length)return;const rem=adrLog[adrLog.length-1].t+adrIntv*60000-Date.now();
+ if(rem<=0){e.textContent='ĐẾN GIỜ';e.parentNode.classList.add('due');}else{const s=Math.ceil(rem/1000);e.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');e.parentNode.classList.remove('due');}}
+setInterval(tickTimer,1000);
+function viewTab(d,k){const tb=(d.tabs||[]).find(t=>t[0]===k);if(!tb)return viewRegs(d,'all');const o=tb[4];let h='';
+ if(o.widget==='adrTimer')h+=timerHTML();
+ if(o.regs)h+=o.regs.map(id=>d.regs.find(r=>r.id===id)).filter(Boolean).map(r=>regHTML(r,d)).join('');
+ if(o.calcs)h+=o.calcs.map((id,i)=>calcHTML(id,i===0)).join('');
+ if(o.flow&&d.flow)h+='<div class="card" style="margin-top:12px"><div class="sec-t">'+ic('i-flow')+'Sơ đồ quyết định</div>'+viewFlow(d)+'</div>';
+ const V={ov:viewOv,fu:viewFU};if(o.view&&V[o.view])h+=V[o.view](d);return h;}
 
 /* ---------- màn hình chính ---------- */
 function renderPlanned(it){const g=G(it.g),ready=ALL.filter(x=>x.g===it.g&&DB[x.id]);
@@ -1450,12 +1564,12 @@ function renderMain(){setAccent(groupOf(cur));const it=ALL.find(x=>x.id===cur);
  const grs=[];let cg=null;for(const s of d.states){const lb=s.xl||s.gl;if(lb||!cg){cg={l:lb||'Tình trạng',items:[]};grs.push(cg);}cg.items.push(s);}
  for(const gr of grs)h+='<div class="cgrp"><span>'+esc(gr.l)+'</span><div class="chips">'+gr.items.map(s=>'<button class="chip'+(s.x?' rad':'')+(s.t?' t-'+s.t:'')+(set.has(s.id)?' on':'')+'" data-act="st" data-id="'+s.id+'" aria-pressed="'+set.has(s.id)+'"><span class="bx"></span>'+esc(s.l)+'</button>').join('')+'</div></div>';
  for(const n of needs(d))h+='<div class="need">'+ic('i-alert')+'<div><b>Cần bổ sung thông tin</b><p>'+esc(n.m)+'</p>'+(n.ask?'<div class="chips">'+n.ask.map(id=>{const s=stDef(d,id);return s?'<button class="chip'+(s.x?' rad':'')+'" data-act="st" data-id="'+id+'"><span class="bx"></span>'+esc(s.l)+'</button>':''}).join('')+'</div>':'')+'</div></div>';
- h+='</section><nav class="qa" aria-label="Chức năng">'+QA.filter(q=>qaAvail(d,q[0])).map(q=>{const n=qaCount(d,q[0]);return'<button class="qb'+(view===q[0]?' on':'')+'" style="--tc:var(--'+q[3]+')" data-act="view" data-id="'+q[0]+'">'+ic(q[2],'sm')+q[1]+(n?'<span class="n">'+n+'</span>':'')+'</button>';}).join('')+'</nav>';
+ h+='</section>'+(d.tabs?'<nav class="etabs" aria-label="Cấp cứu">'+d.tabs.map(t=>'<button class="eb t-'+t[3]+(view==='t:'+t[0]?' on':'')+'" data-act="view" data-id="t:'+t[0]+'">'+ic(t[2],'sm')+t[1]+'</button>').join('')+'</nav>':'')+'<nav class="qa" aria-label="Chức năng">'+QA.filter(q=>qaAvail(d,q[0])).map(q=>{const n=qaCount(d,q[0]);return'<button class="qb'+(view===q[0]?' on':'')+'" style="--tc:var(--'+q[3]+')" data-act="view" data-id="'+q[0]+'">'+ic(q[2],'sm')+q[1]+(n?'<span class="n">'+n+'</span>':'')+'</button>';}).join('')+'</nav>';
  const V={drugs:viewDrugs,ci:viewCI,renal:viewRenal,hep:viewHep,admit:viewAdmit,fu:viewFU,flow:viewFlow,ov:viewOv,diff:viewDiff,special:viewSpecial,calc:viewCalc,refs:viewRefs};
- h+='<div class="view" id="view">'+(V[view]?V[view](d):viewRegs(d,view))+'</div>';
+ h+='<div class="view" id="view">'+(view.startsWith('t:')?viewTab(d,view.slice(2)):V[view]?V[view](d):viewRegs(d,view))+'</div>';
  h+='<div class="disc">'+ic('i-info','sm')+'<span>Công cụ hỗ trợ quyết định cho bác sĩ, không phải đơn thuốc tự động. Bác sĩ kiểm tra và lựa chọn trước khi sử dụng; đối chiếu tờ hướng dẫn, danh mục thuốc và quy trình bệnh viện. Mục "Chờ kiểm duyệt" chưa được xác thực đầy đủ. Không nhập thông tin định danh người bệnh.</span></div>'+creditHTML();
  $('#main').innerHTML=h;
- document.querySelectorAll('#view details.calc[open]').forEach(runCalc);
+ document.querySelectorAll('#view details.calc[open]').forEach(runCalc);renderTimer();
  if(hlDrug){const e=document.getElementById('dg-'+hlDrug);if(e)setTimeout(()=>e.scrollIntoView({behavior:'smooth',block:'center'}),60);}}
 
 /* ---------- panel hỗ trợ quyết định ---------- */
@@ -1522,7 +1636,11 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(
  else if(a==='freset'){flows[cur]=null;renderMain();}
  else if(a==='fapply'){const d=DB[cur],set=S(),n=[];for(const s of new Set(flows[cur].flatMap(x=>d.flow.n[x].set||[])))addSt(d,set,s,n);view='all';toast('Đã áp dụng lựa chọn từ sơ đồ.');render();}
  else if(a==='preset'){const c=CALCS[b.dataset.c],p=c.presets[+b.dataset.i],cc=p.c[+b.dataset.j],el=b.closest('details.calc');el._preset=p;
-  const set=(k,v)=>{const inp=el.querySelector('[name="'+k+'"]');if(inp)inp.value=v;};set('amt',cc[0]);set('vol',cc[1]);set('u',p.u);set('du',p.du);set('dose',p.dose);runCalc(el);toast(p.n+': '+cc[2]+(p.note?' – '+p.note:''));}
+  const set=(k,v)=>{const inp=el.querySelector('[name="'+k+'"]');if(inp)inp.value=v;};if(b.dataset.c==='adr'){set('amp',cc[0]);set('vol',cc[1]);if(!el.querySelector('[name=dose]').value)set('dose','0.1');}else{set('amt',cc[0]);set('vol',cc[1]);set('u',p.u);set('du',p.du);set('dose',p.dose);}runCalc(el);toast(p.n+': '+cc[2]+(p.note?' – '+p.note:''));}
+ else if(a==='pm'){const el=b.closest('details.calc'),inp=el.querySelector('[name="'+b.dataset.k+'"]');const v=Math.max(0.01,Math.round(((Number(inp.value)||0)+Number(b.dataset.d))*100)/100);inp.value=v;runCalc(el);}
+ else if(a==='adrlog'){const d=Number($('#adrDose').value);adrLog.push({t:Date.now(),d});adrIntv=Number($('#adrInt').value);renderTimer();}
+ else if(a==='adrundo'){adrLog.pop();renderTimer();}
+ else if(a==='adrreset'){adrLog=[];renderTimer();}
  else if(a==='tools')openTools();
  else if(a==='mclose')$('#modal').classList.remove('on');
  else if(a==='theme'){const r=document.documentElement,dk=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dk?'light':'dark';store.theme=r.dataset.theme;save();}

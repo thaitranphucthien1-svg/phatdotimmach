@@ -2,8 +2,16 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Điều trị Nội tổng hợp</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1E384E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nội tổng hợp">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -655,6 +663,8 @@ b,strong{font-weight:620}
 .dbtn span{min-width:0;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
 body:not(.unpin) .sp-top b{font-size:min(calc(14px*var(--fs)),15.5px)}
 .sp-badge{font-size:min(calc(11.5px*var(--fs)),13px)}
+#instBtn[hidden]{display:none}
+@media (display-mode:standalone){.top{padding-top:max(env(safe-area-inset-top),0px)}}
 </style>
 <script>try{var _s=JSON.parse(localStorage.getItem("nth_v2")||"{}");document.documentElement.dataset.fs=_s.fs==null?1:_s.fs;}catch(e){}</script>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
@@ -671,6 +681,7 @@ body:not(.unpin) .sp-top b{font-size:min(calc(14px*var(--fs)),15.5px)}
   <button class="tbtn sbtn" data-act="sopen" aria-label="Tìm kiếm"><svg class="i"><use href="#i-search"/></svg></button>
   <div class="fsz" role="group" aria-label="Cỡ chữ"><button data-act="fs" data-id="-1" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A<small>−</small></button><button data-act="fs" data-id="1" aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A<small>+</small></button></div>
   <button class="tbtn" data-act="tools"><svg class="i"><use href="#i-calc"/></svg><span class="tl">Công cụ tính</span></button>
+  <button class="tbtn" id="instBtn" data-act="install" hidden title="Cài ứng dụng"><svg class="i"><use href="#i-home"/></svg><span class="tl">Cài ứng dụng</span></button>
   <button class="tbtn" data-act="theme" aria-label="Đổi chế độ sáng/tối"><svg class="i"><use href="#i-moon"/></svg></button>
 </header>
 <nav class="gbar" id="gbar" aria-label="Nhóm chuyên khoa"></nav>
@@ -3121,7 +3132,7 @@ WIDGETS.septrend=(()=>{let rows=[];const F=[['t','Giờ',''],['map','MAP',''],['
   (rows.length?'<div class="rxw"><table class="tbl"><thead><tr>'+F.map(f=>'<th>'+f[1]+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+F.map(f=>'<td>'+(r[f[0]]==null?'–':esc(r[f[0]]))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>':'');},
   act(x){if(x==='add'){const r={};let n=0;for(const f of F){const e=document.getElementById('st_'+f[0]);if(!e||e.value==='')continue;r[f[0]]=f[0]==='t'?e.value:Number(e.value);n++;}if(!n){toast('Nhập ít nhất một chỉ số.');return;}if(!r.t){const d=new Date();r.t=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}rows.push(r);}
    else if(x==='undo')rows.pop();else if(x==='clr')rows=[];this.after();}};})();
-const APPVER='2.7.0 (28/11/2026)';const CREDITS=['Thiết kế và phát triển bởi ThS. BS. Thái Trần Phúc Thiện'];
+const APPVER='2.7.1 (28/11/2026)';const CREDITS=['Thiết kế và phát triển bởi ThS. BS. Thái Trần Phúc Thiện'];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const strip=s=>String(s||'').replace(/<[^>]+>/g,'');
@@ -3404,6 +3415,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(
  else if(a==='fs')fsStep(+id);
  else if(a==='rpt'){store.rpoff=!store.rpoff;save();rpApply();}
  else if(a==='rpcalc')rpCalc(id);
+ else if(a==='install'){if(window._bip){window._bip.prompt();window._bip.userChoice.finally(()=>{window._bip=null;$('#instBtn').hidden=true;});}}
  else if(a==='pin'){store.pin=store.pin===false;save();spPinApply();renderSide();$('#side').classList.remove('on');$('#scrim').classList.remove('on');toast(store.pin?'Đã ghim menu bên trái.':'Đã bỏ ghim – mở menu bằng nút ☰.');}
  else if(a==='sqx'){const i=$('#sq');i.value='';spFilter();i.focus();}
  else if(a==='group'){const f=ALL.find(x=>x.g===id&&DB[x.id])||ALL.find(x=>x.g===id);openGroups.add(id);openDisease(f.id);}
@@ -3459,6 +3471,10 @@ if(store.theme)document.documentElement.dataset.theme=store.theme;
  window.addEventListener('scroll',()=>{const y=window.scrollY;if(Date.now()<lock||(document.activeElement&&document.activeElement.id==='q')){ly=y;return;}if(y>160&&y>ly+6)setC(true);else if(y<ly-40||y<40)setC(false);ly=y;},{passive:true});})();
 
 spPinApply();fsApply();rpApply();
+/* v2.7.1: PWA – cài ứng dụng, dùng khi không có mạng */
+if('serviceWorker' in navigator&&location.protocol==='https:'&&/github\.io$/.test(location.hostname))window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();window._bip=e;$('#instBtn').hidden=false;});
+window.addEventListener('appinstalled',()=>{$('#instBtn').hidden=true;toast('Đã cài ứng dụng Nội tổng hợp.');});
 })();
 </script>
 </body></html>
